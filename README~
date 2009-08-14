@@ -1,0 +1,15 @@
+A template for a Sinatra app that gets Authlogic working for authentication.
+
+To use it, make sure that you have the required dependancies:
+
+  gem install sinatra haml authlogic active_record
+
+Then fork this project, or clone it: 
+
+  git clone git://github.com/ehsanul/Sinatra-Authlogic-Template.git
+
+If you have sqlite3 installed, the app should work right out of the box. Run it with:
+
+  ruby sin-auth-template.rb
+  
+If you want to use a different database, just edit the db/config.yml file and set the desired adapter

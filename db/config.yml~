@@ -1,0 +1,3 @@
+adapter: sqlite3
+database: db/sin-authl-template.sqlite3
+timeout: 5000

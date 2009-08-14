@@ -1,0 +1,21 @@
+Login:
+= @user.login
+%br/
+Login count:
+= @user.login_count
+%br/
+Last request at:
+= @user.last_request_at 
+%br/
+Last login at:
+= @user.last_login_at
+%br/
+Current login at:</b>
+= @user.current_login_at 
+%br/
+Last login ip:</b>
+= @user.last_login_ip
+%br/
+Current login ip:
+= @user.current_login_ip
+
