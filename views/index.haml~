@@ -1,4 +1,0 @@
-Home page
-%br/
-You are 
-= current_user ? "logged in" : "not logged in"
