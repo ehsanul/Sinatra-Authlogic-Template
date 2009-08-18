@@ -59,7 +59,7 @@ module Authlogic
 end
 
 # Making sure this is a Sinatra app
-# Note: Sinatra must be required before this file, otherwise the before filter must be set within the app
+# Note: Sinatra must be required before sinadapt, otherwise the before filter must be set within the app
 if defined? Sinatra::Base
   before do
     Authlogic::Session::Base.controller = Authlogic::ControllerAdapters::SinatraAdapter.new(self)
