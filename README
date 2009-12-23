@@ -1,10 +1,9 @@
-Warning: Not tested in production yet, and doesn't work with anything after Authlogic 2.1.1.
+Warning: Not really tested in production yet, but seems to work fine.
 
 This is a template for a Sinatra app that gets Authlogic working for authentication.
 To use it, make sure that you have the required dependencies:
 
-  gem install sinatra haml activerecord activesupport sqlite3-ruby
-  gem install -v 2.1.1 authlogic
+  gem install sinatra haml authlogic activerecord activesupport sqlite3-ruby
 
 Then fork this project, or clone it: 
 
@@ -21,7 +20,6 @@ If you want to use a different database, just edit the db/config.yml file and sp
 For subsequent migrations, run:
 
   rake migrate
-
 
 Todo:
   Tests
