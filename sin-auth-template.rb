@@ -1,9 +1,15 @@
-['rubygems', 'yaml', 'sinatra', 'haml', 'active_record', 'authlogic', 'sinadapt'].each { |lib| require lib }
+['rubygems', 'yaml', 'sinatra', 'haml', 'active_record', 'authlogic'].each { |lib| require lib }
 
 configure do
-  enable :sessons
+  enable :sessions
   dbconfig = YAML::load( File.open('db/config.yml') )
   ActiveRecord::Base.establish_connection(dbconfig)
+end
+
+# Work around a bug in authlogic.  See:
+#     http://github.com/binarylogic/authlogic/issuesearch?state=open&q=remote_ip#issue/80
+class Sinatra::Request
+  alias remote_ip ip
 end
 
 class UserSession < Authlogic::Session::Base; end
