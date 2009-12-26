@@ -21,7 +21,7 @@ For subsequent migrations, run:
   rake migrate
  
 
-If you have sqlite3 installed and sendmail for the email activation, the app should work out of the box. Run it with:
+If you have sqlite3 installed and sendmail, or smtp on localhost for the email activation, the app should work out of the box. Run it with:
 
   ruby sin-auth-template.rb
   
@@ -30,7 +30,7 @@ Or run it in production using passenger, or just:
   rackup
 
 
-If you don't want to use sendmail, Pony can be configured to use SMTP. Just take a look at the User instance methods and adjust as required. Should probably switch to the Mail library. This is just something to get you started, so it doesn't matter all that much anyways.
+Pony can be configured to use other SMTP settings. Just take a look at the User instance methods and adjust as required. Should probably switch to the Mail library. This is just something to get you started, so it doesn't matter all that much anyways.
 
 
 Contributions: 
