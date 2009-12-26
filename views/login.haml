@@ -6,9 +6,12 @@ Login
   %input{:type=>'text', :size=>20, :name=>'user[email]'}
   %br/
   Password:
-  %input{:type=>'text', :size=>20, :name=>'user[password]'}
+  %input{:type=>'password', :size=>20, :name=>'user[password]'}
   %br/
   Remember Me
   %input{:type=>'checkbox', :value => '1', :name => 'user[remember_me]'}
   %br/
   %input{:type=>'submit', :value=>'Login'}
+%br/
+%br/
+= link('Forgot your password?', '/forgot-password')

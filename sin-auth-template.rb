@@ -1,4 +1,7 @@
-['rubygems', 'yaml', 'sinatra', 'haml', 'active_record', 'authlogic'].each { |lib| require lib }
+$LOAD_PATH.unshift *Dir.entries('vendor').map{|gem| File.join '.', gem, 'lib'}
+$LOAD_PATH.uniq!
+['rubygems', 'yaml', 'sinatra', 'haml', 'active_record', 'authlogic', 'pony', 'user'].each { |lib| require lib }
+load 'signup and login.rb'
 
 configure do
   enable :sessions
@@ -11,14 +14,6 @@ end
 class Sinatra::Request
   alias remote_ip ip
 end
-
-class UserSession < Authlogic::Session::Base; end
-
-class User < ActiveRecord::Base
-  acts_as_authentic
-end
-
-Notice = Struct.new(:msg).new
 
 # Rails style nested params
 before do
@@ -35,6 +30,8 @@ before do
   end
   request.params.replace new_params
 end
+
+Notice = Struct.new(:msg).new
 
 helpers do
   def current_user_session
@@ -62,6 +59,7 @@ helpers do
   end
 end
 
+
 get '/' do
   haml :index
 end
@@ -77,39 +75,3 @@ get '/show' do
   haml :show
 end
 
-get '/login' do
-  haml :login
-end
-
-post '/login' do
-  puts params.inspect
-  @user_session = UserSession.new(params[:user])
-  if @user_session.save
-    notify "You're logged in!"
-    redirect '/show'
-  else
-    notify "Login didn't work. Try again?"
-    haml :login
-  end
-end
-
-get '/logout' do
-  current_user_session.destroy
-  notify "You logged out!"
-  redirect '/login'
-end
-
-get '/register' do
-  haml :register
-end
-
-post '/register' do
-  @user = User.new(params[:user])
-  if @user.save
-    notify "Registration Successful. Try logging in"
-    redirect '/login'
-  else
-    notify "Registration Failed. Try again?"
-    haml :register
-  end
-end

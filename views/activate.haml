@@ -1,0 +1,12 @@
+Select a password and activate your account below.
+%br/
+%br/
+%form{ :method => "post", :action => '/activate' }
+  Password:
+  %input{ :type => 'text', :size => 20, :name => 'password' }
+  %br/
+  Confirm Password:
+  %input{ :type => 'text', :size => 20, :name => 'password_confirmation' }
+  %br/
+  %input{ :type => 'hidden', :value => @user.perishable_token, :name => 'token' }
+  %input{ :type => 'submit', :value => 'Activate' }
