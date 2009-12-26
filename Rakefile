@@ -5,7 +5,7 @@ require 'yaml'
 task :default => :dbsetup
 
 task :loadconfig do
-  DBconfig = YAML::load( File.open('db/config.yml') )
+  DBconfig = YAML::load( File.open('db/config.yml') )['development']
 end
 
 task :dbsetup => :loadconfig do

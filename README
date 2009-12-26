@@ -1,6 +1,6 @@
 Warning: Not really tested in production yet.
 
-This is a template for a Sinatra app that gets Authlogic (version 2.1.3) working for authentication.
+This is a template for a Sinatra app that gets Authlogic (version 2.1.3+) working for authentication.
 To use it, make sure that you have the required dependencies (Sinatra and Authlogic are vendored):
 
   gem install haml activerecord activesupport sqlite3-ruby pony
@@ -11,7 +11,17 @@ Then clone this repository:
   git clone git://github.com/ehsanul/Sinatra-Authlogic-Template.git
 
 
-If you have sqlite3 installed and sendmail for the email activation, the app should work right out of the box. Run it with:
+Edit the db/config.yml file and specify adapter settings. It defaults to sqlite3.
+You have to then run rake to create the database and run migrations. The command is simply:
+
+  rake
+ 
+For subsequent migrations, run:
+
+  rake migrate
+ 
+
+If you have sqlite3 installed and sendmail for the email activation, the app should work out of the box. Run it with:
 
   ruby sin-auth-template.rb
   
@@ -20,17 +30,7 @@ Or run it in production using passenger, or just:
   rackup
 
 
-If you want to use a different database, just edit the db/config.yml file and specify the desired adapter settings. Then run rake to create the database and run migrations. The command is simply:
-
-  rake
-  
-
-For subsequent migrations, run:
-
-  rake migrate
-
-
-If you don't want to use sendmail, Pony can be configured to use SMTP. Just take a look at the User methods and adjust as required. I'm thinking of switching to the Mail library. This is just something to get you started, so it doesn't matter all that much anyways.
+If you don't want to use sendmail, Pony can be configured to use SMTP. Just take a look at the User instance methods and adjust as required. Should probably switch to the Mail library. This is just something to get you started, so it doesn't matter all that much anyways.
 
 
 Contributions: 
@@ -39,4 +39,5 @@ Contributions:
 
 
 Todo:
+
   Tests

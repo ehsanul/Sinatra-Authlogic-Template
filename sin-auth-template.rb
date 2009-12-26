@@ -1,11 +1,10 @@
-$LOAD_PATH.unshift *Dir.entries('vendor').map{|gem| File.join '.', gem, 'lib'}
+$LOAD_PATH.unshift *Dir.entries('vendor').map{|gem| File.join 'vendor', gem, 'lib'}
 $LOAD_PATH.uniq!
-['rubygems', 'yaml', 'sinatra', 'haml', 'active_record', 'authlogic', 'pony', 'user'].each { |lib| require lib }
-load 'signup and login.rb'
+['rubygems', 'yaml', 'sinatra', 'haml', 'authlogic', 'pony', 'user'].each {|lib| require lib}
 
 configure do
   enable :sessions
-  dbconfig = YAML::load( File.open('db/config.yml') )
+  dbconfig = YAML::load(File.open 'db/config.yml')[ Sinatra::Application.environment.to_s ]
   ActiveRecord::Base.establish_connection(dbconfig)
 end
 
@@ -59,6 +58,8 @@ helpers do
   end
 end
 
+
+['signup and login.rb', 'user.rb'].each {|routes_or_classes| load routes_or_classes}
 
 get '/' do
   haml :index

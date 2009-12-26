@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift *Dir.entries('vendor').map{|gem| File.join '.', gem, 'lib'}
+$LOAD_PATH.unshift *Dir.entries('vendor').map{|gem| File.join 'vendor', gem, 'lib'}
 require 'rubygems'
 require 'rack'
 require 'sinatra'
